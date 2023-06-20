@@ -1,7 +1,7 @@
 <header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" style="background-color: #e3f2fd;">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 shadow-none" href="{{ route('admin.index') }}">{{ config('devstarit.app_name') }}</a>
     <button class="navbar-toggler d-md-none collapsed me-4" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span data-feather="menu" class="text-primary"></span>
     </button>
     <div class="dropdown me-3">
         <a href="javascript:void(0)" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
