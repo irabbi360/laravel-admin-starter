@@ -8,6 +8,7 @@ use App\Http\Requests\StorePermissionRequest;
 use App\Http\Requests\UpdatePermissionRequest;
 use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Permission;
+use Symfony\Component\HttpFoundation\Response;
 
 class PermissionController extends Controller
 {
