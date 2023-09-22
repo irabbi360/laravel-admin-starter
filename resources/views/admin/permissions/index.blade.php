@@ -19,9 +19,7 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th width="10">
-
-                        </th>
+                        <th width="10"></th>
                         <th>
                             ID
                         </th>

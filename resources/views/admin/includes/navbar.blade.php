@@ -1,9 +1,28 @@
-<header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" style="background-color: #e3f2fd;">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 shadow-none" href="{{ route('admin.index') }}">{{ config('devstarit.app_name') }}</a>
-    <button class="navbar-toggler d-md-none collapsed me-4" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span data-feather="menu" class="text-primary"></span>
-    </button>
-    <div class="dropdown me-3">
+<header class="navbar sticky-top bg-light flex-md-nowrap p-0 shadow" data-bs-theme="light">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="{{ route('admin.index') }}">{{ config('devstarit.app_name') }}</a>
+
+    <ul class="navbar-nav flex-row d-md-none">
+        <li class="nav-item text-nowrap">
+            <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false"
+                    aria-label="Toggle search">
+                <svg class="bi text-white">
+                    <use xlink:href="#search"/>
+                </svg>
+            </button>
+        </li>
+        <li class="nav-item text-nowrap">
+            <button class="nav-link px-3 text-dark" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <svg class="bi text-dark">
+                    <use xlink:href="#list"/>
+                </svg>
+            </button>
+        </li>
+    </ul>
+
+    <div class="dropdown me-3 m-auto">
         <a href="javascript:void(0)" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             {{ auth()->user()->name }}
         </a>
