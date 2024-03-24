@@ -3,9 +3,30 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            User List
+            <div class="float-start">
+                Permission List
+            </div>
+            @can('permission_create')
+                <div class="float-end">
+                    <a class="btn btn-success btn-sm text-white" href="{{ route("admin.users.create") }}">
+                        Add User
+                    </a>
+                </div>
+            @endcan
         </div>
-
+        <!-- <div class="float-start">
+            <div class="card-header">
+                    User List
+                </div>
+                @can('permission_create')
+                    <div class="float-end">
+                        <a class="btn btn-success btn-sm text-white" href="{{ route("admin.users.create") }}">
+                            Add User
+                        </a>
+                    </div>
+                @endcan
+            </div>
+        </div>  -->
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table">

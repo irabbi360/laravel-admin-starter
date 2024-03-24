@@ -12,6 +12,10 @@ Breadcrumbs::for('admin.users.index', function (BreadcrumbTrail $trail): void {
     $trail->parent('admin.index');
     $trail->push('Users', route('admin.users.index'));
 });
+Breadcrumbs::for('admin.users.create', function (BreadcrumbTrail $trail): void {
+    $trail->parent('admin.index');
+    $trail->push('Users', route('admin.users.create'));
+});
 // Role
 Breadcrumbs::for('admin.roles.index', function (BreadcrumbTrail $trail): void {
     $trail->parent('admin.index');

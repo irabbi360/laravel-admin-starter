@@ -29,7 +29,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        abort_if(Gate::denies('permission_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        return view('admin.users.create');
+        
     }
 
     /**
@@ -41,6 +43,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+
+        if ($user->save()) {
+            return redirect()->route('admin.users.index')->with('message', 'User created successfully!');
+        }
+        return redirect()->route('admin.users.index')->with('message', 'User create failed!');
     }
 
     /**
