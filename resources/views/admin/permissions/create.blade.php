@@ -12,7 +12,7 @@
                     <label for="title">Name*</label>
                     <input type="text" id="title" name="name" class="form-control @error('name') is-invalid @enderror"
                            value="{{ old('name', isset($permission) ? $permission->name : '') }}" required>
-                    @error('name'))
+                    @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

@@ -43,6 +43,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'name' => 'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:255',
+            'email' => 'required|email|unique:users,email|max:255',
+            'password' => 'required|string|min:8', // Adjust the min length as per your requirements
+        ]);
+
         $user = new User();
 
         $user->name = $request->name;
