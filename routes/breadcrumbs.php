@@ -3,8 +3,7 @@
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Mosdels\Role;
-use Spatie\Permission\Models\Users;
+use Spatie\Permission\Models\Role;
 
 Breadcrumbs::for('admin.index', function (BreadcrumbTrail $trail): void {
     $trail->push('Dashboard', route('admin.index'));
