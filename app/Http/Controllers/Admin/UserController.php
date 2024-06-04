@@ -31,7 +31,7 @@ class UserController extends Controller
     {
         abort_if(Gate::denies('permission_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('admin.users.create');
-        
+
     }
 
     /**
@@ -56,9 +56,11 @@ class UserController extends Controller
         $user->password = $request->password;
 
         if ($user->save()) {
-            return redirect()->route('admin.users.index')->with('message', 'User created successfully!');
+            flash()->addSuccess('User created successfully.');
+            return redirect()->route('admin.users.index');
         }
-        return redirect()->route('admin.users.index')->with('message', 'User create failed!');
+        flash()->addError('User create fail!');
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -112,9 +114,11 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             $user->status = $status;
             if ($user->save()){
-                return redirect()->back()->with('message', 'User status updated successfully!');
+                flash()->addSuccess('User status updated successfully.');
+                return redirect()->back();
             }
-            return redirect()->back()->with('error', 'User status update fail!');
+            flash()->addError('User status update fail!');
+            return redirect()->back();
         }
         return redirect(Response::HTTP_FORBIDDEN, '403 Forbidden');
     }

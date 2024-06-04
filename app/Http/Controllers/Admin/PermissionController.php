@@ -43,10 +43,10 @@ class PermissionController extends Controller
         $permission->name = $request->name;
 
         if ($permission->save()) {
-            toast('Permission successfully created!','success');
+            flash()->addSuccess('Permission successfully created.');
             return redirect()->route('admin.permissions.index');
         }
-        toast('Whoops! Permission create failed', 'error');
+        flash()->addError('Whoops! Permission create failed!');
         return redirect()->back();
     }
 
@@ -73,10 +73,10 @@ class PermissionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StorePermissionRequest $request, Permission $permission)
+    public function update(UpdatePermissionRequest $request, Permission $permission)
     {
         $permission->update($request->all());
-        toast('Permission successfully updated!','success');
+        flash()->addSuccess('Permission successfully updated.');
         return redirect()->route('admin.permissions.index');
     }
 
@@ -88,7 +88,7 @@ class PermissionController extends Controller
         abort_if(Gate::denies('permission_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $permission->delete();
-
+        flash()->addInfo('Permission deleted successfully.');
         return back();
     }
 }
