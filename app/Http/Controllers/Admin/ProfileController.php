@@ -26,8 +26,10 @@ class ProfileController extends Controller
         $user->email = $request->email;
 
         if ($user->save()) {
-            return redirect()->back()->with('message', 'Profile updated successfully!');
+            flash()->addSuccess('Profile Profile successfully.');
+            return redirect()->back();
         }
+        flash()->addError('Password update fail!.');
         return redirect()->back()->with('error', 'Profile update fail!');
     }
 
@@ -49,9 +51,11 @@ class ProfileController extends Controller
         ]);
 
         if ($updated) {
-            return redirect()->back()->with('message', 'Password changed successfully!');
+            flash()->addSuccess('Password changed successfully.');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with('error', 'Profile change fail!');
+            flash()->addError('Password change fail!.');
+            return redirect()->back();
         }
     }
 }

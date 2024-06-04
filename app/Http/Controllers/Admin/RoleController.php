@@ -35,7 +35,9 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->name]);
         $role->permissions()->sync($request->input('permissions', []));
 
-        return redirect()->route('admin.roles.index')->with('message', 'Role save successfully.');
+        flash()->addSuccess('Role saved successfully.');
+
+        return redirect()->route('admin.roles.index');
     }
 
     public function edit(Role $role)
@@ -53,8 +55,9 @@ class RoleController extends Controller
     {
         $role->update(['name' => $request->name]);
         $role->permissions()->sync($request->input('permissions', []));
+        flash()->addSuccess('Role updated successfully.');
 
-        return redirect()->route('admin.roles.index')->with('message', 'Role updated successfully.');
+        return redirect()->route('admin.roles.index');
     }
 
     public function show(Role $role)
@@ -71,7 +74,7 @@ class RoleController extends Controller
         abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $role->delete();
-
+        flash()->addSuccess('Role deleted successfully.');
         return back();
     }
 }
